@@ -1,0 +1,11 @@
+{
+    "/bootstrap/js/bootstrap.bundle.min.js": "/bootstrap/js/bootstrap.bundle.min.js",
+    "/bootstrap/js/bootstrap.min.js": "/bootstrap/js/bootstrap.min.js",
+    "/bootstrap/css/bootstrap.min.css": "/bootstrap/css/bootstrap.min.css",
+    "/bootstrap/css/bootstrap-grid.min.css": "/bootstrap/css/bootstrap-grid.min.css",
+    "/bootstrap/css/bootstrap-reboot.min.css": "/bootstrap/css/bootstrap-reboot.min.css",
+    "/bootstrap/css/bootstrap-icons.min.css": "/bootstrap/css/bootstrap-icons.min.css",
+    "/bootstrap/css/fonts/bootstrap-icons.woff": "/bootstrap/css/fonts/bootstrap-icons.woff",
+    "/bootstrap/css/fonts/bootstrap-icons.woff2": "/bootstrap/css/fonts/bootstrap-icons.woff2",
+    "/css/app.min.css": "/css/app.min.css"
+}

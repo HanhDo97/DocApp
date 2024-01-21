@@ -1,0 +1,40 @@
+a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+a:hover {
+    color: #007bff !important;
+}
+
+.should-hidden {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .dropdown {
+        display: block;
+    }
+
+    .should-display {
+        display: none;
+    }
+
+    .should-hidden {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .dropdown {
+        display: none;
+    }
+
+    .should-display {
+        display: flex;
+    }
+
+    .should-hidden {
+        display: none;
+    }
+}
