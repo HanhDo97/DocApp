@@ -10,7 +10,7 @@ use Livewire\WithFileUploads;
 class HomeUserTable extends Component
 {
     use WithFileUploads;
-    
+
     public $username;
     public $password;
     public $users = [];
@@ -20,17 +20,17 @@ class HomeUserTable extends Component
     public function save()
     {
         $this->validate();
-        $this->userImage->store('public');
+        $imagePath = $this->userImage->store('user/images');
 
         User::create([
             'name'     => $this->username,
-            'email'    => $this->username,
-            'password' => Hash::make($this->password)
+            'email'    => $this->username . '@app',
+            'password' => Hash::make($this->password),
+            'image'    => 'storage/' . $imagePath
         ]);
 
         // reset input
         $this->reset();
-
     }
 
     public function delete(User $user)

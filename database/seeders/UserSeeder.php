@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,12 +20,17 @@ class UserSeeder extends Seeder
             'email'      => 'root@app',
             'password'   => Hash::make('password'),
             'privilege_id'  => 1,
+            'image'      => 'storage/user/images/qUuOIY3dURnAbRlUSESQ3aaBGOizlEs0PVVzdd3i.jpg',
             'created_at' => now(),
         ]);
+
+        $file = UploadedFile::fake()->image('avatar.png');
+        $imagePath = $file->store('user/images');
         DB::table('users')->insert([
             'name'       => 'users',
             'email'      => 'users@app',
             'password'   => Hash::make('password'),
+            'image'      => 'storage/' . $imagePath,
             'created_at' => now(),
         ]);
     }

@@ -15,7 +15,8 @@ class UserController
     public function me(Request $request)
     {
 
-        $user = $request->user();
+        $user        = $request->user();
+        $user->image = url($user->image);
 
         $privilege = Privilege::find($user->privilege_id);
 

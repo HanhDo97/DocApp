@@ -17,6 +17,9 @@
                 <div class="col-2">
                     <input wire:model="userImage" type="file">
                 </div>
+                @if ($userImage)
+                <img src="{{ $userImage->temporaryUrl() }}">
+                @endif
             </div>
 
         </form>
