@@ -11,8 +11,6 @@ class HomeCategoryTable extends Component
 
     public function save(){
         $this->validate();
-
-        dd($this->cateName);
     }
 
     public function rules()
