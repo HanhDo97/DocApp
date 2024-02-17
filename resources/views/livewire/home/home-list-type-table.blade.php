@@ -24,7 +24,13 @@
                 </tr>
             </thead>
             <tbody>
-
+                @foreach($types as $key => $type)
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{$type->name}}</td>
+                    <td>{{$type->code}}</td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
