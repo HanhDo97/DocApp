@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ListType\CategoryController;
 use App\Http\Controllers\Api\Token\GetTokenController;
 use App\Http\Controllers\Api\Token\RevokeTokenController;
 use App\Http\Controllers\Api\Users\UserController;
@@ -30,4 +31,8 @@ Route::middleware(['auth:sanctum', 'ability:has-full-access'])->group(function (
     Route::prefix('user')->group(function () {
         Route::get('all', [UserController::class, 'all']);
     });
+});
+
+Route::prefix('list_type')->middleware('auth:sanctum')->group(function(){
+    Route::get('categories', [CategoryController::class, 'getList']);
 });

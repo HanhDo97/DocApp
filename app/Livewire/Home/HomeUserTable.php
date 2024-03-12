@@ -56,7 +56,7 @@ class HomeUserTable extends Component
     public function render()
     {
         $this->users = User::select('*')->orderBy('created_at', 'desc')->get();
-
+        
         return view('livewire.home.home-user-table');
     }
 }
