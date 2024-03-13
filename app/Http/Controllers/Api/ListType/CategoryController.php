@@ -15,12 +15,23 @@ class CategoryController
 
     public function getList()
     {
-        $data = $this->model->where('list_id', '1')->get();
+        try {
+            $data = $this->model->where('list_id', '1')->get();
 
-        return Response([
-            'status'  => '200',
-            'message' => 'Data retrieved successfully',
-            'data'    => $data
-        ]);
+            foreach ($data as $cate) {
+                $cate->icon_or_image = url('/') . '/' . $cate->icon_or_image;
+            }
+
+            return Response([
+                'status'  => '200',
+                'message' => 'Data retrieved successfully',
+                'data'    => $data
+            ]);
+        } catch (\Exception $e) {
+            return Response([
+                'status'  => '400',
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 }
