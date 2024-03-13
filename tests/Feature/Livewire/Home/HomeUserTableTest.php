@@ -38,9 +38,10 @@ class HomeUserTableTest extends TestCase
     /** @test */
     public function upload_file_successfully()
     {
-        $file = UploadedFile::fake()->image('avatar.png');
+        $file      = UploadedFile::fake()->image('avatar.png');
         $imagePath = $file->store('user/images');
+        $imagePath = Storage::disk()->path($imagePath); // For getting the path
 
-        Storage::disk('public')->assertExists($imagePath);
+        $this->assertFileExists($imagePath);
     }
 }

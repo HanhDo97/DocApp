@@ -24,7 +24,13 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach($children as $child)
+                <tr wire:key="{{$child->id}}">
+                    <th scope="row">{{$loop->index + 1}}</th>
+                    <td>{{$child->name}}</td>
+                    <td>{{$child->code}}</td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
