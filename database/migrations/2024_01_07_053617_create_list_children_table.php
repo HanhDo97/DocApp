@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('list_id');
             $table->string('name');
             $table->string('code')->unique();
+            $table->string('icon_or_image')->nullable();
             $table->timestamps();
 
             $table->foreign('list_id')->references('id')->on('list_types')->onDelete('cascade');

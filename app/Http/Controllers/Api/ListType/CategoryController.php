@@ -18,7 +18,7 @@ class CategoryController
         $data = $this->model->where('list_id', '1')->get();
 
         return Response([
-            'status'  => 200,
+            'status'  => '200',
             'message' => 'Data retrieved successfully',
             'data'    => $data
         ]);

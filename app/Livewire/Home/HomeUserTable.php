@@ -20,7 +20,10 @@ class HomeUserTable extends Component
     public function save()
     {
         $this->validate();
-        $imagePath = $this->userImage->store('user/images');
+        $imagePath = $this->userImage->store('public/user/images');
+
+        // remove 'public/' because when storage link will access app/public in storage folder
+        $imagePath = str_replace('public/', '', $imagePath);
 
         User::create([
             'name'     => $this->username,
