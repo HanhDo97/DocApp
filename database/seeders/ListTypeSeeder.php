@@ -14,8 +14,15 @@ class ListTypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('list_types')->insert([
-            'code'     => 'QUYEN_TRUY_CAP',
-            'name'    => 'Quyền truy cập',
+            'code'       => 'CATEGORY',
+            'name'       => 'Category',
+            'created_at' => now(),
+        ]);
+
+        DB::table('list_types')->insert([
+            'code'       => 'QUYEN_TRUY_CAP',
+            'name'       => 'Quyền truy cập',
+            'created_at' => now(),
         ]);
     }
 }

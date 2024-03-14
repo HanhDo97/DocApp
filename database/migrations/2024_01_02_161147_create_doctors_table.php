@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
+            $table->integer('rank')->nullable();
             $table->string('speciality');
             $table->timestamps();
 
