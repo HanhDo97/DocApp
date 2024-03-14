@@ -24,8 +24,12 @@ class UserSeeder extends Seeder
             'created_at' => now(),
         ]);
 
-        $file = UploadedFile::fake()->image('avatar.png');
-        $imagePath = $file->store('user/images');
+        $file      = UploadedFile::fake()->image('avatar.png');
+        $imagePath = $file->store('public/user/images');
+        
+        // remove 'public/' because when storage link will access app/public in storage folder
+        $imagePath = str_replace('public/', '' ,$imagePath);
+
         DB::table('users')->insert([
             'name'       => 'users',
             'email'      => 'users@app',
