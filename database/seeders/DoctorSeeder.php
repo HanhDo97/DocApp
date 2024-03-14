@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Doctors;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Http\UploadedFile;
@@ -16,9 +17,12 @@ class DoctorSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = DB::table('users')->take(10)->orderBy('created_at','desc')->get();
+        $users = User::take(10)->orderBy('created_at', 'desc')->get();
 
         foreach ($users as $user) {
+            $user->image = 'images/doctors/doctor_' . fake()->numberBetween(1, 9) . '.jpg';
+            $user->save();
+
             DB::table('doctors')->insert([
                 'user_id'    => $user->id,
                 'name'       => $user->name . ' Doctor',
@@ -30,7 +34,7 @@ class DoctorSeeder extends Seeder
         $doctors = Doctors::take(5)->get();
 
         foreach ($doctors as $key => $doctor) {
-            $doctor->rank = $key+1;
+            $doctor->rank = $key + 1;
             $doctor->save();
         }
     }
