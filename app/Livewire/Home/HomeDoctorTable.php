@@ -11,7 +11,7 @@ class HomeDoctorTable extends Component
     public $doctors;
     public $userName;
     public $doctorName;
-    public $speciality;
+    public $about;
 
     public function save()
     {
@@ -21,9 +21,9 @@ class HomeDoctorTable extends Component
         $user = User::where('name', $this->userName)->first();
 
         Doctors::create([
-            'user_id'    => $user->id,
-            'name'       => $this->doctorName,
-            'speciality' => $this->speciality
+            'user_id' => $user->id,
+            'name'    => $this->doctorName,
+            'about'   => $this->about
         ]);
     }
 
@@ -32,7 +32,7 @@ class HomeDoctorTable extends Component
         return  [
             'userName'   => 'required|exists:users,name',
             'doctorName' => 'required',
-            'speciality' => 'required'
+            'about'      => 'required'
         ];
     }
 

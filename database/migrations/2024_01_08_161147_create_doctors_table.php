@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::dropIfExists('doctors');
-        
+
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('cate_code',20)->nullable();
             $table->string('name');
             $table->integer('rank')->nullable();
-            $table->string('speciality');
+            $table->string('about');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

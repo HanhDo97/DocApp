@@ -9,8 +9,8 @@
                     @error('doctorName') <small>{{$message}}</small> @enderror
                 </div>
                 <div class="col-3">
-                    <input wire:model="speciality" placeholder="speciality" style="width: 100%;" type="text" value="{{$speciality}}">
-                    @error('speciality') <small>{{$message}}</small> @enderror
+                    <input wire:model="about" placeholder="about" style="width: 100%;" type="text" value="{{$about}}">
+                    @error('about') <small>{{$message}}</small> @enderror
                 </div>
                 <div class="col-3">
                     <input wire:model="userName" placeholder="userName" style="width: 100%;" type="text" value="{{$userName}}">
@@ -24,7 +24,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Speciality</th>
+                    <th scope="col">About</th>
                     <th scope="col">User Name</th>
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
                 <tr wire:key="{{$doctor->id}}">
                     <th scope="row">{{$loop->index + 1}}</th>
                     <td>{{$doctor->name}}</td>
-                    <td>{{$doctor->speciality}}</td>
+                    <td>{{$doctor->about}}</td>
                     <td>{{$doctor->user->name}}</td>
                 </tr>
                 @endforeach

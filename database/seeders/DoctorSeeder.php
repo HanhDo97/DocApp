@@ -24,10 +24,11 @@ class DoctorSeeder extends Seeder
             $user->save();
 
             DB::table('doctors')->insert([
-                'user_id'    => $user->id,
-                'name'       => $user->name . ' Doctor',
-                'speciality' => fake()->realText(100),
-                'created_at' => now(),
+            'user_id'    => $user->id,
+            'name'       => $user->name . ' Doctor',
+            'cate_code'  => $this->getRandomCategory(fake()->numberBetween(1, 6)),
+            'about'      => fake()->realText(100),
+            'created_at' => now(),
             ]);
         }
 
@@ -37,5 +38,24 @@ class DoctorSeeder extends Seeder
             $doctor->rank = $key + 1;
             $doctor->save();
         }
+    }
+
+    public function getRandomCategory($cateId): string
+    {
+        switch($cateId){
+            case 1:
+                return 'GENERAL';
+            case 2:
+                return 'CARDIOLOGY';
+            case 3:
+                return 'RESPIRATIONS';
+            case 4:
+                return 'DERMATOLOGY';
+            case 5:
+                return 'GYNECOLOGY';
+            case 6:
+                return 'DENTAL';
+        }
+        return '';
     }
 }
