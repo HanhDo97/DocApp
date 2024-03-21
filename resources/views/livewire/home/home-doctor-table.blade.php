@@ -26,6 +26,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">About</th>
                     <th scope="col">User Name</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,11 @@
                     <td>{{$doctor->name}}</td>
                     <td>{{$doctor->about}}</td>
                     <td>{{$doctor->user->name}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit-doctor" wire:click="editDoctor({{$doctor->id}})">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

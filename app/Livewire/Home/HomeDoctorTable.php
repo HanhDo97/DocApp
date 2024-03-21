@@ -12,6 +12,7 @@ class HomeDoctorTable extends Component
     public $userName;
     public $doctorName;
     public $about;
+    public $editDoctorId;
 
     public function save()
     {
@@ -34,6 +35,12 @@ class HomeDoctorTable extends Component
             'doctorName' => 'required',
             'about'      => 'required'
         ];
+    }
+
+    public function editDoctor($id)
+    {
+        $doctor = Doctors::find($id);
+        $this->dispatch('editDoctor', $doctor);
     }
 
     public function render()

@@ -13,5 +13,6 @@
         </div>
     </div>
 
+    <livewire:edit.doctor-edit>
 
 </div>
