@@ -4,6 +4,7 @@ namespace App\Livewire\Home;
 
 use App\Models\Doctors;
 use App\Models\User;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class HomeDoctorTable extends Component
@@ -37,12 +38,7 @@ class HomeDoctorTable extends Component
         ];
     }
 
-    public function editDoctor($id)
-    {
-        $doctor = Doctors::find($id);
-        $this->dispatch('editDoctor', $doctor);
-    }
-
+    #[On('doctorUpdated')]
     public function render()
     {
         $this->doctors = Doctors::select('*')->orderBy('created_at', 'desc')->get();

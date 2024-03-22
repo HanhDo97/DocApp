@@ -37,7 +37,7 @@
                     <td>{{$doctor->about}}</td>
                     <td>{{$doctor->user->name}}</td>
                     <td>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit-doctor" wire:click="editDoctor({{$doctor->id}})">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit-doctor" wire:click="$dispatch('editDoctor',{ id: {{ $doctor->id }} })">
                             <i class="bi bi-pencil-square"></i>
                         </button>
                     </td>

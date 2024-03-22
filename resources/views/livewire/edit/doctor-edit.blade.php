@@ -1,31 +1,54 @@
 <!-- livewire/edit/doctor-edit.blade.php -->
 
-<div class="modal fade" id="edit-doctor" tabindex="-1" role="dialog" aria-labelledby="edit-doctor-label" aria-hidden="true">
+<div class="modal fade {{$class}}" id="edit-doctor" tabindex="-1" role="dialog" aria-labelledby="edit-doctor-label" aria-hidden="true" style="{{$style}}">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit-doctor-label">Doctor Edit</h5>
+                @if($editName)
+                <input type="text" class="form-control" wire:model="doctorName">
+                @error('doctorName') <small>{{$message}}</small> @enderror
+
+                <button wire:click='toggleEditMode("editName")' style="margin-left: 1rem;" type="button" class="btn btn-info"><i class="bi bi-check-lg"></i></button>
+                @else
+                <h5 class="modal-title" id="edit-doctor-label">{{$doctorName}}</h5>
+                <button wire:click='toggleEditMode("editName")' style="margin-left: 1rem;" type="button" class="btn btn-info"><i class="bi bi-pencil"></i></button>
+                @endif
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Display doctor information here -->
-                Name: {{ $name }}<br>
-                About: {{ $about }}<br>
-                <!-- Add other fields as needed -->
+                <form>
+                    <div class="form-group">
+                        <label>Email address: </label>
+                        <input type="email" class="form-control" wire:model="userEmail">
+                        @error('userEmail') <small>{{$message}}</small> @enderror
+
+                    </div>
+                    <div class="form-group">
+                        <label>Category:</label>
+                        <select wire:model='doctorCate' class="form-control">
+                            @foreach($categories as $cate)
+                            <option value="{{$cate['code']}}">{{$cate['name']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>About:</label>
+                        <textarea wire:model='doctorAbout' class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button wire:click='saveChange()' type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    Livewire.on('editDoctor', (doctor) => {
-        // Show the modal
-        $('#edit-doctor').modal('show');
+    document.addEventListener('doctorUpdated', function() {
+        $('#edit-doctor').modal('hide');
     });
 </script>
