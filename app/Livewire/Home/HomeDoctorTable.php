@@ -27,6 +27,14 @@ class HomeDoctorTable extends Component
             'name'    => $this->doctorName,
             'about'   => $this->about
         ]);
+
+        $this->reset();
+    }
+
+
+    public function openEditDoctorModal($doctorId)
+    {
+        $this->dispatch('editDoctor', $doctorId);
     }
 
     public function rules()
