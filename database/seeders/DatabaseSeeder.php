@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             ListTypeSeeder::class,
             ListChildSeeder::class,
             AppointmentsSeeder::class,
-            AppointmentUserSeeder::class
         ]);
     }
 }

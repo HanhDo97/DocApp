@@ -30,7 +30,7 @@ class DoctorController
                     ->with(['user' => function ($query) {
                         $query->select('id', 'image');
                     }])
-                    ->whereNotNull('rank')->get();
+                    ->whereNotNull('rank')->take(5)->get();
                 Cache::set('topDoctors', $topDoctors);
             }
 
