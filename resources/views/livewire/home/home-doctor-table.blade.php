@@ -46,3 +46,9 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        document.addEventListener('editDoctor', function() {
+            $('.modal-backdrop').remove();
+        });
+    </script>

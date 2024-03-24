@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Home\HomePage;
+use App\Livewire\Login\LoginPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomePage::class);
+Route::get('/login', LoginPage::class)->name('login');
 
-Route::get('/home', HomePage::class)->name('home');
+Route::middleware('auth')->group(function () {
+    Route::get('/', HomePage::class);
+    Route::get('/home', HomePage::class)->name('home');
+});

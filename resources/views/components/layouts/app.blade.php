@@ -15,17 +15,17 @@
 
 </head>
 
-@include('html.nav')
+<livewire:layouts.nav>
 
-<body style="font-family: Arial, Helvetica, sans-serif;">
-    {{ $slot }}
+    <body style="font-family: Arial, Helvetica, sans-serif;">
+        {{ $slot }}
 
-    @livewireScripts
+        @livewireScripts
 
-</body>
+    </body>
 
-<script src="{{URL::asset('bootstrap/js/jquery-3.2.1.slim.min.js')}}"></script>
-<script src="{{URL::asset('bootstrap/js/proper.min.js')}}"></script>
-<script src="{{URL::asset('bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{URL::asset('bootstrap/js/jquery-3.2.1.slim.min.js')}}"></script>
+    <script src="{{URL::asset('bootstrap/js/proper.min.js')}}"></script>
+    <script src="{{URL::asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
 </html>

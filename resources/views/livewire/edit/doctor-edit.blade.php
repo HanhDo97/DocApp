@@ -51,4 +51,14 @@
     document.addEventListener('doctorUpdated', function() {
         $('#edit-doctor').modal('hide');
     });
+
+    document.addEventListener('editDoctor', function() {
+        setTimeout(function() {
+            $('.modal-backdrop').each(function(index) {
+                if (index > 0) {
+                    $(this).remove();
+                }
+            });
+        }, 1);
+    });
 </script>
