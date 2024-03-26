@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\Appointments\AppointmentController;
+use App\Http\Controllers\Api\Doctors\DoctorController;
 use App\Http\Controllers\Api\ListType\CategoryController;
 use App\Http\Controllers\Api\Token\GetTokenController;
 use App\Http\Controllers\Api\Token\RevokeTokenController;
@@ -35,4 +37,12 @@ Route::middleware(['auth:sanctum', 'ability:has-full-access'])->group(function (
 
 Route::prefix('list_type')->middleware('auth:sanctum')->group(function(){
     Route::get('categories', [CategoryController::class, 'getList']);
+});
+
+Route::prefix('doctors')->middleware('auth:sanctum')->group(function(){
+    Route::get('ranked', [DoctorController::class, 'getDoctorRanked']);
+});
+
+Route::prefix('appointments')->middleware('auth:sanctum')->group(function(){
+    Route::get('user', [AppointmentController::class,'getTodayMeetting']);
 });

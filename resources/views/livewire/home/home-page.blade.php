@@ -13,5 +13,8 @@
         </div>
     </div>
 
+    <div wire:ignore.self>
+        <livewire:edit.doctor-edit>
+    </div>
 
 </div>

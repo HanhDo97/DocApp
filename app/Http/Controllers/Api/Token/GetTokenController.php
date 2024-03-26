@@ -17,49 +17,58 @@ class GetTokenController
 
     public function getToken(Request $request)
     {
-        $ablities = [];
+        try{
 
-        $validator = Validator::make($request->all(), [
-            'email'    => 'required',
-            'password' => 'required',
-        ], [
-            'email.required'    => 'You should enter email',
-            'password.required' => 'Password is required',
-        ]);
+            $ablities = [];
 
-
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-
-            $message = $errors->all()[0];
-
-            $key = $errors->keys()[0];
-
-            throw ValidationException::withMessages([
-                $key => [$message],
+            $validator = Validator::make($request->all(), [
+                'email'    => 'required',
+                'password' => 'required',
+            ], [
+                'email.required'    => 'You should enter email',
+                'password.required' => 'Password is required',
             ]);
+
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+
+                $message = $errors->all()[0];
+
+                $key = $errors->keys()[0];
+
+                throw ValidationException::withMessages([
+                    $key => [$message],
+                ]);
+            }
+
+            $user = User::where('email', $request->email)->first();
+
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'email' => ['The provided credentials are incorrect.'],
+                ]);
+            }
+
+            if ($user->privilege_id == 1) {
+                $ablities = ['has-full-access'];
+            } else {
+                $ablities = ['has-limited-access'];
+            }
+
+
+            return Response([
+                'status'  => '200',
+                'message' => 'success',
+                'token'   => $user->createToken('access-token', $ablities)->plainTextToken
+            ], 200);
         }
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
+        catch(\Exception $ex){
+            return Response([
+                'status'  => 422,
+                'message' => $ex->getMessage(),
+            ], 200);
         }
-
-        if ($user->privilege_id == 1) {
-            $ablities = ['has-full-access'];
-        } else {
-            $ablities = ['has-limited-access'];
-        }
-
-
-        return Response([
-            'status'  => '200',
-            'message' => 'success',
-            'token'   => $user->createToken('access-token', $ablities)->plainTextToken
-        ], 200);
     }
 
     public function checkTokenValid(Request $request)

@@ -11,8 +11,11 @@ class Doctors extends Model
 
     protected $fillable = [
         'user_id',
+        'cate_code',
         'name',
-        'speciality'
+        'about',
+        'rank',
+        
     ];
 
     public function user()

@@ -14,7 +14,7 @@
         <div id="nav-menu" class="col-md-6 should-display justify-content-around">
             <a href="#">Active</a>
             <a href="#">Home</a>
-            <a href="#">Link</a>
+            <a wire:click='logout()'>Logout</a>
         </div>
         <div class="dropdown">
             <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

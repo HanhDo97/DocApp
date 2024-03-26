@@ -14,7 +14,6 @@ class UserController
 
     public function me(Request $request)
     {
-
         $user        = $request->user();
         $user->image = url($user->image);
 

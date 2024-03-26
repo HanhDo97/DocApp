@@ -11,6 +11,7 @@
     <link href="{{URL::asset('bootstrap/css/bootstrap-reboot.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('bootstrap/js/bootstrap.bundle.min.js')}}" rel="stylesheet">
     <link href="{{URL::asset('bootstrap/js/bootstrap.min.js')}}" rel="stylesheet">
+
     @livewireStyles
 </head>
 

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             DoctorSeeder::class,
             ListTypeSeeder::class,
             ListChildSeeder::class,
+            AppointmentsSeeder::class,
         ]);
     }
 }

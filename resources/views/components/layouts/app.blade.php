@@ -11,17 +11,21 @@
     <link href="{{URL::asset('bootstrap/css/bootstrap-grid.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('bootstrap/css/bootstrap-reboot.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('bootstrap/css/bootstrap-icons.min.css')}}" rel="stylesheet">
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
 
-@include('html.nav')
+<livewire:layouts.nav>
 
-<body style="font-family: Arial, Helvetica, sans-serif;">
-    {{ $slot }}
-</body>
+    <body style="font-family: Arial, Helvetica, sans-serif;">
+        {{ $slot }}
 
-<script src="{{URL::asset('bootstrap/js/jquery-3.2.1.slim.min.js')}}"></script>
-<script src="{{URL::asset('bootstrap/js/proper.min.js')}}"></script>
-<script src="{{URL::asset('bootstrap/js/bootstrap.min.js')}}"></script>
+        @livewireScripts
+
+    </body>
+
+    <script src="{{URL::asset('bootstrap/js/jquery-3.2.1.slim.min.js')}}"></script>
+    <script src="{{URL::asset('bootstrap/js/proper.min.js')}}"></script>
+    <script src="{{URL::asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
 </html>
