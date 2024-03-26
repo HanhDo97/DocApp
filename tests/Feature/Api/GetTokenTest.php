@@ -15,7 +15,7 @@ class GetTokenTest extends TestCase
         ]);
 
         $response->assertStatus(200)
-            ->assertJsonStructure(['status','message','token']);
+            ->assertJsonStructure(['status', 'message', 'token']);
     }
 
     /** @test */
@@ -26,7 +26,10 @@ class GetTokenTest extends TestCase
             'password' => 'wrong_password'
         ]);
 
-        $response->assertStatus(422)
-            ->assertExactJson(['message' => 'The provided credentials are incorrect.', 'errors' => ['email' => ['The provided credentials are incorrect.']]]);
+        $response->assertStatus(200)
+            ->assertExactJson([
+                'status'  => 422,
+                'message' => 'The provided credentials are incorrect.',
+            ]);
     }
 }
