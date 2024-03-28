@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Doctors;
 
+use App\Http\Resources\DoctorResource;
 use App\Models\Doctors;
 use App\Models\ListChild;
 use App\Services\DoctorService;
@@ -26,7 +27,7 @@ class DoctorController
             $topDoctors = Cache::get('topDoctors');
             if (!$topDoctors) {
                 $topDoctors =
-                    $this->model->select('name', 'cate_code', 'user_id', 'about')
+                    $this->model->select('id', 'name', 'cate_code', 'user_id', 'about')
                     ->with(['user' => function ($query) {
                         $query->select('id', 'image');
                     }])
@@ -41,7 +42,7 @@ class DoctorController
             return Response([
                 'status'  => '200',
                 'message' => 'Data retrieved successfully',
-                'data'    => $topDoctors
+                'data'    => DoctorResource::collection($topDoctors),
             ]);
         } catch (\Exception $e) {
             return Response([
