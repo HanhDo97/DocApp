@@ -5,3 +5,5 @@
 5. sudo docker exec doc_app_server chmod -R 777 storage
 6. sudo docker exec doc_app_server php artisan storage:link
 7. sudo docker exec doc_app_server php artisan key:generate
+8. sudo docker exec doc_app_server php artisan migrate --seed
+9. sudo docker exec doc_app_server php artisan config:cache
