@@ -16,12 +16,12 @@ class AppointmentController
         try {
             $user           = $request->user();
             $appointments   = $user->appointments;
-            $todayMeettings = $appointments->where('date_meet', date('Y-m-d'));
+            $todayMeetings = $appointments->where('date_meet', date('Y-m-d'));
             
             return Response([
                 'status'  => '200',
                 'message' => 'Data retrieved successfully',
-                'data'    => AppointmentRecource::collection($todayMeettings),
+                'data'    => AppointmentRecource::collection($todayMeetings),
             ]);
         } catch (\Exception $e) {
             dd($e);
