@@ -41,7 +41,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button wire:click='saveChange()' type="button" class="btn btn-primary">Save changes</button>
+                <button wire:click='saveChange()' type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -49,7 +49,12 @@
 
 <script>
     document.addEventListener('doctorUpdated', function() {
-        $('#edit-doctor').modal('hide');
+        console.log(123);
+        setTimeout(function() {
+            $('.modal').modal('hide');
+
+        })
+
     });
 
     document.addEventListener('editDoctor', function() {

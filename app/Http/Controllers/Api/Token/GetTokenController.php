@@ -65,7 +65,7 @@ class GetTokenController
         }
         catch(\Exception $ex){
             return Response([
-                'status'  => 422,
+                'status'  => '422',
                 'message' => $ex->getMessage(),
             ], 200);
         }
