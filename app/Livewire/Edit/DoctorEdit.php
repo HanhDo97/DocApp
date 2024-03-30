@@ -61,6 +61,9 @@ class DoctorEdit extends Component
 
         // Reset the form fields after saving changes
         $this->reset(['doctorName', 'doctorCate', 'doctorAbout', 'userEmail']);
+
+        $this->class = '';
+        $this->style = 'display: none;';
     }
 
     public function toggleEditMode($mode)
