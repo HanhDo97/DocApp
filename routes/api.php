@@ -35,11 +35,11 @@ Route::middleware(['auth:sanctum', 'ability:has-full-access'])->group(function (
     });
 });
 
-Route::prefix('list_type')->middleware('auth:sanctum')->group(function(){
+Route::prefix('list_type')->group(function(){
     Route::get('categories', [CategoryController::class, 'getList']);
 });
 
-Route::prefix('doctors')->middleware('auth:sanctum')->group(function(){
+Route::prefix('doctors')->group(function(){
     Route::get('ranked', [DoctorController::class, 'getDoctorRanked']);
 });
 
