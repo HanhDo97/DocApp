@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Token;
 
+use App\Events\LoginHistoryEvent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -56,6 +57,7 @@ class GetTokenController
                 $ablities = ['has-limited-access'];
             }
 
+            LoginHistoryEvent::dispatch($user);
 
             return Response([
                 'status'  => '200',
