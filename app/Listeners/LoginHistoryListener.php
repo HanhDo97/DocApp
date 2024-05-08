@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\LoginHistoryEvent;
+use App\Events\LoginEvent;
 use App\Models\LoginHistory;
 
 class LoginHistoryListener
@@ -18,7 +18,7 @@ class LoginHistoryListener
     /**
      * Handle the event.
      */
-    public function handle(LoginHistoryEvent $event): void
+    public function handle(LoginEvent $event): void
     {
         $history = LoginHistory::create([
             'user_id'     => $event->user->id,

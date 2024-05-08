@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Login;
 
+use App\Events\LoginEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -31,6 +32,8 @@ class LoginPage extends Component
             'email' => $this->email,
             'password' => $this->password
         ], $this->rememberMe)) {
+            LoginEvent::dispatch(auth()->user());
+            
             return redirect(route('home'));
         }
 
